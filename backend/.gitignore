@@ -1,0 +1,11 @@
+node_modules
+*.sqlite
+dist
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+.env
+report.*
