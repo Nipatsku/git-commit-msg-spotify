@@ -20,7 +20,7 @@ Simple example can be found in /backend
 
 ```bash
 # cd target git project root
-git clone git-commit-msg-spotify
+git clone git@github.com:Nipatsku/git-commit-msg-spotify.git
 cd git-commit-msg-spotify
 yarn build <your spotify ID> <backend URL, e.g. http://localhost:3000>
 cd ..
