@@ -1,4 +1,5 @@
 const fs = require('fs')
+const child_process = require('child_process')
 
 
 const SPOTIFY_ID = process.argv[2]
@@ -57,3 +58,23 @@ if ( fs.existsSync(gitIgnoreFile, clbk) ) {
     console.log(gitIgnoreFile)
     fs.writeFileSync(gitIgnoreFile, `git-commit-msg-spotify*`, 'utf8')
 }
+
+// Write package.json
+const packageJson = `${outFolder}/package.json`
+console.log(packageJson)
+fs.copyFileSync('./package.json', packageJson)
+
+// install dependencies
+child_process.exec(
+    'yarn',
+    function (error, stdout) {
+        console.log(stdout && stdout);
+        if (error !== null) {
+            console.log(error);
+            process.abort(-1);
+        }
+        else {
+            console.log(`Build successful.`)
+        }
+      }
+)
