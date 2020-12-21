@@ -39,8 +39,8 @@ const commitMsgJsFile = `${outFolder}/commit-msg.js`
 console.log(commitMsgJsFile)
 let commitMsgJs = fs.readFileSync('commit-msg.js', 'utf8')
 // Inject env values
-commitMsgJs = commitMsgJs.replace('let SPOTIFY_ID', `let SPOTIFY_ID=${SPOTIFY_ID}`)
-commitMsgJs = commitMsgJs.replace('let BACKEND_URL', `let BACKEND_URL=${BACKEND_URL}`)
+commitMsgJs = commitMsgJs.replace('let SPOTIFY_ID', `let SPOTIFY_ID="${SPOTIFY_ID}"`)
+commitMsgJs = commitMsgJs.replace('let BACKEND_URL', `let BACKEND_URL="${BACKEND_URL}"`)
 fs.writeFileSync( commitMsgJsFile, commitMsgJs, 'utf8' )
 
 // Append gitignore
