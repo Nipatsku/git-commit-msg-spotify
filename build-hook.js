@@ -41,7 +41,7 @@ let commitMsgJs = fs.readFileSync('commit-msg.js', 'utf8')
 // Inject env values
 commitMsgJs = commitMsgJsFile.replace('let SPOTIFY_ID', `let SPOTIFY_ID=${SPOTIFY_ID}`)
 commitMsgJs = commitMsgJsFile.replace('let BACKEND_URL', `let BACKEND_URL=${BACKEND_URL}`)
-fs.writeFileSync( `./commit-msg.js`, commitMsgJs, 'utf8' )
+fs.writeFileSync( commitMsgJsFile, commitMsgJs, 'utf8' )
 
 // Append gitignore
 const gitIgnoreFile = `../.gitignore`
