@@ -7,7 +7,8 @@ if ( ! SPOTIFY_ID || !BACKEND_URL ) {
     console.error(`Error: Missing arguments.
 
     Example usage:
-    npm run build:hook -- my-spotify-username http://localhost:3000`)
+    yarn build:hook my-spotify-username http://localhost:3000`)
+    process.exit(-1)
 }
 
 
