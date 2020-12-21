@@ -27,4 +27,5 @@ cd ..
 rm -r git-commit-msg-spotify
 ```
 
+![Git log example](screenshot.png)
 
