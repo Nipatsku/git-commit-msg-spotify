@@ -24,13 +24,6 @@ if ( fs.existsSync( outFolder, clbk ) ) {
 console.log( outFolder )
 fs.mkdir(outFolder, clbk)
 
-// Write .env file
-const envFile = `${outFolder}/.env`
-console.log( envFile )
-fs.writeFileSync( envFile, `SPOTIFY_ID=${SPOTIFY_ID}
-BACKEND_URL=${BACKEND_URL}
-`, 'utf8' )
-
 // Write commit-msg file
 const commitMsgHook = `../.git/hooks/commit-msg`
 if ( fs.existsSync( commitMsgHook, clbk ) ) {
@@ -44,7 +37,11 @@ fs.copyFileSync( `./commit-msg`, commitMsgHook )
 // Write commit-msg.js file
 const commitMsgJsFile = `${outFolder}/commit-msg.js`
 console.log(commitMsgJsFile)
-fs.copyFileSync( `./commit-msg.js`, commitMsgJsFile )
+let commitMsgJs = fs.readFileSync(commitMsgJsFile, 'utf8')
+// Inject env values
+commitMsgJsFile = commitMsgJsFile.replace('let SPOTIFY_ID', `let SPOTIFY_ID=${SPOTIFY_ID}`)
+commitMsgJsFile = commitMsgJsFile.replace('let BACKEND_URL', `let BACKEND_URL=${BACKEND_URL}`)
+fs.writeFileSync( `./commit-msg.js`, commitMsgJs, 'utf8' )
 
 // Append gitignore
 const gitIgnoreFile = `../.gitignore`

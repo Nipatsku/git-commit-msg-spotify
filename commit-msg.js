@@ -3,8 +3,6 @@ console.log('Node commit-msg script:')
 
 // #region Module Imports
 
-const dotenvFile = process.env['PWD'] ? process.env['PWD'] + '/git-commit-msg-spotify-build/.env' : undefined
-require('dotenv').config({ path: dotenvFile })
 const axios = require('axios')
 const fs = require('fs')
 
@@ -28,19 +26,12 @@ try {
 
 // #endregion
 
+
+// : Values are injected by build script :
+
 let SPOTIFY_ID
 let BACKEND_URL
 
-// #region Parse environment variables
-
-const parseEnv = ( name ) => {
-    const value = process.env[name]
-    if ( value === undefined ) throw new Error(`Missing .env variable: ${ name}`)
-    console.log(name, value)
-    return value
-}
-SPOTIFY_ID = parseEnv('SPOTIFY_ID')
-BACKEND_URL = parseEnv('BACKEND_URL')
 
 // #endregion
 
