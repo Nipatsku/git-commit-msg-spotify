@@ -17,6 +17,8 @@ try {
     COMMIT_MSG = process.argv[process.argv.length-2]
     COMMIT_MSG_FILE = process.argv[process.argv.length-1]
     if ( ! COMMIT_MSG || ! COMMIT_MSG_FILE ) throw new Error(`Missing args`)
+    console.log(`COMMIT_MSG`, COMMIT_MSG)
+    console.log(`COMMIT_MSG_FILE`, COMMIT_MSG_FILE)
 } catch ( e ) {
     console.error(`Unexpected error while parsing commit-msg arguments`)
     console.error( e )
