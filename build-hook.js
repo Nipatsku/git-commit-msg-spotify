@@ -51,7 +51,7 @@ const gitIgnoreFile = `../.gitignore`
 if ( fs.existsSync(gitIgnoreFile, clbk) ) {
     // Modify
     fs.writeFileSync(gitIgnoreFile, fs.readFileSync( gitIgnoreFile, 'utf8' ) + `
-`, 'utf8')
+git-commit-msg-spotify*`, 'utf8')
     console.log(gitIgnoreFile, '(MODIFIED)')
 } else {
     // Write .gitignore
@@ -66,7 +66,7 @@ fs.copyFileSync('./package.json', packageJson)
 
 // install dependencies
 child_process.exec(
-    'yarn',
+    `cd ${outFolder} && yarn`,
     function (error, stdout) {
         console.log(stdout && stdout);
         if (error !== null) {

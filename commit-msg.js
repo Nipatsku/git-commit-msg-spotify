@@ -3,7 +3,8 @@ console.log('Node commit-msg script:')
 
 // #region Module Imports
 
-require('dotenv').config()
+const dotenvFile = process.env['PWD'] ? process.env['PWD'] + '/git-commit-msg-spotify-build/.env' : undefined
+require('dotenv').config({ path: dotenvFile })
 const axios = require('axios')
 const fs = require('fs')
 
