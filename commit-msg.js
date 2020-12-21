@@ -28,6 +28,7 @@ try {
 // #endregion
 
 let SPOTIFY_ID
+let BACKEND_URL
 
 // #region Parse environment variables
 
@@ -38,6 +39,7 @@ const parseEnv = ( name ) => {
     return value
 }
 SPOTIFY_ID = parseEnv('SPOTIFY_ID')
+BACKEND_URL = parseEnv('BACKEND_URL')
 
 // #endregion
 
@@ -47,7 +49,7 @@ SPOTIFY_ID = parseEnv('SPOTIFY_ID')
     try {
         console.log(`\tRequesting users active Spotify playback information.`)
         const response = await axios({
-          url: `http://localhost:4050?id=${SPOTIFY_ID}`,
+          url: `${BACKEND_URL}?id=${SPOTIFY_ID}`,
           method: 'get'
         })
                 

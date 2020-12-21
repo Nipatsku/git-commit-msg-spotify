@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create-db": "sqlite3 db.sqlite save db.sqlite .exit",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules src/index.ts"
   },
-  "author": "",
+  "author": "Niilo Keinänen",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",

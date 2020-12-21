@@ -1,12 +1,11 @@
 {
-  "name": "git-pre-commit",
+  "name": "git-commit-msg-spotify",
   "version": "1.0.0",
   "description": "",
-  "main": "pre-commit.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node build-hook"
   },
-  "author": "",
+  "author": "Niilo Keinänen",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",

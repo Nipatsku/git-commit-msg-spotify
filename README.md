@@ -8,8 +8,23 @@ Unnecessary and annoying? - *Yes*
 Awesome and inspiring? - *Hell yes*
 
 
+Developed with Node 12.10.0
+
+## Backend
+
+Requires separate backend for fetching active user playback data.
+
+Simple example can be found in /backend
+
 ## Installation
 
-TODO
+```bash
+# cd target git project root
+git clone git-commit-msg-spotify
+cd git-commit-msg-spotify
+yarn build <your spotify ID> <backend URL, e.g. http://localhost:3000>
+cd ..
+rm -r git-commit-msg-spotify
+```
 
-Add a build script that can be copied to any project.
+
