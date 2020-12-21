@@ -44,3 +44,16 @@ fs.copyFileSync( `./commit-msg`, commitMsgHook )
 const commitMsgJsFile = `${outFolder}/commit-msg.js`
 console.log(commitMsgJsFile)
 fs.copyFileSync( `./commit-msg.js`, commitMsgJsFile )
+
+// Append gitignore
+const gitIgnoreFile = `../.gitignore`
+if ( fs.existsSync(gitIgnoreFile, clbk) ) {
+    // Modify
+    fs.writeFileSync(gitIgnoreFile, fs.readFileSync( gitIgnoreFile, 'utf8' ) + `
+`, 'utf8')
+    console.log(gitIgnoreFile, '(MODIFIED)')
+} else {
+    // Write .gitignore
+    console.log(gitIgnoreFile)
+    fs.writeFileSync(gitIgnoreFile, `git-commit-msg-spotify*`, 'utf8')
+}
