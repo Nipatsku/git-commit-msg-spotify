@@ -5,17 +5,29 @@
 // that has the commit message.  The hook should exit with non-zero
 // status after issuing an appropriate message if it wants to stop the
 // commit.  The hook is allowed to edit the commit message file.
-//
-// To enable this hook, rename this file to "commit-msg".
 
-require('child_process').exec(
-	'node commit-msg.js',
-	function (error, stdout) {
-    	console.log(stdout && stdout);
-		if (error !== null) {
-			console.log(error);
-			process.abort(0);
-		}
-  }
-)
+try {
+	const fs = require('fs')
+	const commitMsgFile = process.argv[process.argv.length - 1]
+	let commitMsg = fs.readFileSync( commitMsgFile, 'utf8' )
+	commitMsg = commitMsg.replace("\"", '\'').replace('\n', '')
 
+	const cmd = `node commit-msg.js "${commitMsg}" "${commitMsgFile}"`
+	console.log(cmd)
+
+	require('child_process').exec(
+		cmd,
+		function (error, stdout) {
+			console.log(stdout && stdout);
+			if (error !== null) {
+				console.log(error);
+				process.abort(0);
+			}
+	  	}
+	)
+
+} catch ( e ) {
+	console.error(`Unexpected error during commit-msg Git Hook.`)
+	console.error(`To disable this, delete or rename .git/hooks/commit-msg`)
+	process.exit(1)
+}
