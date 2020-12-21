@@ -54,7 +54,7 @@ SPOTIFY_ID = parseEnv('SPOTIFY_ID')
         if ( response.data ) {
             // : Modify commit message :
             const { name, artist } = response.data
-            const newCommitMsg = `${COMMIT_MSG} (while listening to ${ name } by ${ artist })`
+            const newCommitMsg = `${COMMIT_MSG} (listening to ${ name.toUpperCase() } by ${ artist })`
             console.log(`\tReplacing commit msg: ${newCommitMsg}`)
             fs.writeFileSync( COMMIT_MSG_FILE, newCommitMsg, 'utf8' )
         } else {
