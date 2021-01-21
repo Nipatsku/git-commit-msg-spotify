@@ -238,7 +238,7 @@ const setUserVolume = async ( auth, volume ) => {
             console.error(`\t\trefresh error`, e.message)
         }
         // Read active playback.
-        const playback = await getUserActivePlayback( user.getAuth() )
+        const playback = await getUserActivePlayback( auth )
         if ( playback ) {
             // Send track name + artist.
             const name = playback.item.name
