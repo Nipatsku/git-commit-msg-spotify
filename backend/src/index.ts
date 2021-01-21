@@ -230,6 +230,13 @@ const setUserVolume = async ( auth, volume ) => {
     app.get('/', async function(req, res) {
         // Read User from query parameter.
         const user = await userFromQuery( req, res )
+        let auth = user.getAuth()
+        try {
+            // Refresh access token automatically always.
+            auth = await refreshAccessTokens( user.refresh_token )
+        } catch (e) {
+            console.error(`\t\trefresh error`, e.message)
+        }
         // Read active playback.
         const playback = await getUserActivePlayback( user.getAuth() )
         if ( playback ) {
